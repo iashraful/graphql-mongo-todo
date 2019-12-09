@@ -3,6 +3,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { ApolloServer, AuthenticationError } from 'apollo-server-express';
 
+import db from './config/database'
+import configParser from './utils/config-parser'
+
 import schemas from './schemas';
 import resolvers from './resolvers';
 
@@ -37,6 +40,6 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app, path: '/graphql' });
 
-app.listen(5001, () => {
-  mongoose.connect('mongodb://localhost:27017/graphql');
+app.listen(5000, () => {
+  mongoose.connect(configParser.getDatabase({ config: db }));
 });
