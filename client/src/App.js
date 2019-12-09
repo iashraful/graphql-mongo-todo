@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
+import AllTask from './components/todo/all-task'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello, World</h1>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <AllTask/>
+      </div>
+    )
+  }
 }
 
 export default App;

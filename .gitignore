@@ -1,5 +1,5 @@
 node_modules
-*.code-workspace
 .vscode
 
 server/config/database.js
+client/config/server.js

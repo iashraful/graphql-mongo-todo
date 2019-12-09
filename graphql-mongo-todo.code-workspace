@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+    "editor.autoIndent": true,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+		"editor.tabSize": 2,
+	}
+}

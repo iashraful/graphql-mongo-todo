@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { ApolloServer, AuthenticationError } from 'apollo-server-express';
 
 import db from './config/database'
+import corsConfig from './config/cors'
 import configParser from './utils/config-parser'
 
 import schemas from './schemas';
