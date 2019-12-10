@@ -9,8 +9,7 @@ import configParser from './utils/config-parser'
 import schemas from './schemas';
 import resolvers from './resolvers';
 
-import userModel from './models/user';
-import taskModel from './models/task';
+import models from './models'
 
 const app = express();
 app.use(cors());
@@ -29,10 +28,7 @@ const server = new ApolloServer({
 
       return {
         me,
-        models: {
-          userModel,
-          taskModel,
-        },
+        models: models,
       };
     }
   },

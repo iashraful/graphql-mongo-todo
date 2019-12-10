@@ -1,5 +1,6 @@
 import React from 'react'
 import serverConfig from '../../config/server'
+import axios from 'axios'
 
 
 export default class AddNewTask extends React.Component {
@@ -25,11 +26,11 @@ export default class AddNewTask extends React.Component {
     `
     const options = {
       headers: { 'Content-Type': 'application/json' },
-      method: 'POST',
-      body: JSON.stringify({ query: _mutation })
     }
-    let task = await fetch(serverConfig.graphQLAPI, options).then((response) => response.json())
-    console.log(task)
+    const task = await axios.post(serverConfig.graphQLAPI, JSON.stringify({ query: _mutation }), options)
+    if (task['status'] === 200) {
+      console.log(task['data']['data']['createTask'])
+    }
   }
 
 

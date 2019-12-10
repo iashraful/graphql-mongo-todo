@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ListItem from './list-item'
 import serverConfig from '../../config/server'
+import axios from 'axios'
 
 export default class AllTask extends Component {
   constructor(props) {
@@ -27,8 +28,12 @@ export default class AllTask extends Component {
       method: 'POST',
       body: JSON.stringify({ query: this.state.allTasksQuery })
     }
-    const tasks = await fetch(serverConfig.graphQLAPI, options).then((response) => response.json())
-    this.setState({tasks: tasks['data']['tasks']})
+    const tasks = await axios.post(
+      serverConfig.graphQLAPI, 
+      JSON.stringify({ query: this.state.allTasksQuery }), options)
+      if (tasks.status === 200) {
+        this.setState({tasks: tasks['data']['data']['tasks']})
+      }
   }
 
   componentDidMount() {
