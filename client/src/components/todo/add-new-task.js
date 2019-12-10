@@ -40,14 +40,12 @@ export default class AddNewTask extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            value={this.state.task.title}
-            onChange={(e) => this.setState({ task: {title: e.target.value} })}/>
-          <button type="submit">Add</button>
-        </form>
-      </div>
+      <form className="task-form" onSubmit={this.handleSubmit}>
+        <input
+          placeholder="Add your task here..."
+          value={this.state.task.title}
+          onChange={(e) => this.setState({ task: {title: e.target.value} })}/>
+      </form>
     )
   }
 }

@@ -47,7 +47,7 @@ export default class TaskManagement extends React.Component {
   }
 
   addedNewTask(task) {
-    this.setState({tasks: [...this.state.tasks, task]})
+    this.setState({tasks: [task, ...this.state.tasks]})
   }
 
   componentDidMount() {
@@ -56,7 +56,7 @@ export default class TaskManagement extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="todo">
         <AddNewTask onNewTaskAdded={this.addedNewTask}/>
         <AllTask tasks={this.state.tasks}/>
       </div>

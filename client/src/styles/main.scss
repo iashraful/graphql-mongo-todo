@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+@import "./variables.scss";
+
+
+.todo {
+  display: block;
+  margin: 1rem 20%;
+  font-family: 'Noto Sans', sans-serif;
+
+  .task-form {
+    input {
+      width: 100%;
+      padding: 0.5rem 0;
+      font-size: 1rem;
+
+      &:focus {
+        outline: unset;
+      }
+    }
+  }
+
+  .task-list {
+    line-height: 1.5rem;
+    
+    .task-item-wrapper {
+      display: block;
+
+      .list-item {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// Media query for responsiveness
+@media (max-width: $breakpoint-mobile) {
+  .todo {
+    margin: 1rem 5%;
+  }
+}
