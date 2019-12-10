@@ -7,7 +7,9 @@ export default class AddNewTask extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      task: {}
+      task: {
+        title: ''
+      }
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,10 +19,10 @@ export default class AddNewTask extends React.Component {
     e.preventDefault()
     const _mutation = `
     mutation createTask{
-      createTask(title: "${this.state.task.title}", status: "New"){
+      createTask(title: "${this.state.task.title}"){
         id
         title
-        status
+        isCompleted
       }
     }
     `
@@ -29,7 +31,9 @@ export default class AddNewTask extends React.Component {
     }
     const task = await axios.post(serverConfig.graphQLAPI, JSON.stringify({ query: _mutation }), options)
     if (task['status'] === 200) {
-      console.log(task['data']['data']['createTask'])
+      const data = task['data']['data']['createTask']
+      this.props.onNewTaskAdded(data)
+      this.setState({ task: {title: ''} })
     }
   }
 
@@ -39,6 +43,7 @@ export default class AddNewTask extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input
+            value={this.state.task.title}
             onChange={(e) => this.setState({ task: {title: e.target.value} })}/>
           <button type="submit">Add</button>
         </form>

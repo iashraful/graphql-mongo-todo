@@ -4,7 +4,7 @@ export default gql`
   type Task {
     id: ID!
     title: String!
-    status: String!
+    isCompleted: String!
     author: User!
   }
 
@@ -14,6 +14,6 @@ export default gql`
   }
 
   extend type Mutation {
-    createTask(title: String!, status: String!): Task!
+    createTask(title: String!): Task!
   }
 `;

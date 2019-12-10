@@ -1,13 +1,13 @@
 import React from 'react'
-import AllTask from './components/todo/all-task'
-import AddNewTask from './components/todo/add-new-task'
+
+import TaskManagement from './components/todo/task-management'
+
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <AddNewTask/>
-        <AllTask/>
+        <TaskManagement/>
       </div>
     )
   }

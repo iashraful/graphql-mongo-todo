@@ -5,9 +5,10 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  status: {
-    type: String,
+  isCompleted: {
+    type: Boolean,
     required: true,
+    default: false
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,

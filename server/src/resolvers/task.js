@@ -16,11 +16,11 @@ export default {
     },
   },
   Mutation: {
-    createTask: async (parent, { title, status="New" }, { models: { taskModel }, me }, info) => {
+    createTask: async (parent, { title }, { models: { taskModel }, me }, info) => {
       if (!me) {
         throw new AuthenticationError('You are not authenticated');
       }
-      return await taskModel.create({ title, status, author: me.id });
+      return await taskModel.create({ title, author: me.id });
     },
   },
   Task: {
