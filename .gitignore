@@ -1,5 +1,5 @@
 node_modules
 .vscode
 
-server/config/database.js
-client/config/server.js
+server/src/config/database.js
+client/src/config/server.js
