@@ -24,6 +24,7 @@ export default class TaskManagement extends React.Component {
     }
 
     this.addedNewTask = this.addedNewTask.bind(this)
+    this.findAndUpdateTask = this.findAndUpdateTask.bind(this)
   }
 
   async getAllTodo() {
@@ -50,6 +51,22 @@ export default class TaskManagement extends React.Component {
     this.setState({tasks: [task, ...this.state.tasks]})
   }
 
+  findAndUpdateTask(updatedTask) {
+    const currentTasks = this.state.tasks;
+    let temp = []
+    currentTasks.map((item) => {
+      if (!(item.id === updatedTask.id)) {
+        temp.push(item)
+      }
+    })
+    if (JSON.parse(updatedTask.isCompleted)) {
+      temp.push(updatedTask)
+    } else {
+      temp.unshift(updatedTask)
+    }
+    this.setState({ tasks: temp })
+  }
+
   componentDidMount() {
     this.getAllTodo()
   }
@@ -58,7 +75,7 @@ export default class TaskManagement extends React.Component {
     return (
       <div className="todo">
         <AddNewTask onNewTaskAdded={this.addedNewTask}/>
-        <AllTask tasks={this.state.tasks}/>
+        <AllTask tasks={this.state.tasks} onTaskUpdate={this.findAndUpdateTask}/>
       </div>
     )
   }

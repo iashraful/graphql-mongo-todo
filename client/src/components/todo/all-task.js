@@ -3,12 +3,21 @@ import ListItem from './list-item'
 import Checkbox from './checkbox'
 
 export default class AllTask extends Component {
+  constructor(props) {
+    super(props)
+
+    this.passToParent = this.passToParent.bind(this)
+  }
+
+  passToParent(updatedTask) {
+    this.props.onTaskUpdate(updatedTask)
+  }
 
   render() {
     const allTasks = this.props.tasks.map((item) => {
       return (
         <div className="task-item-wrapper" key={item.id}>
-          <Checkbox todoItem={item}/>
+          <Checkbox todoItem={item} onTaskUpdate={this.passToParent}/>
           <ListItem todoItem={item}/>
         </div>
       )

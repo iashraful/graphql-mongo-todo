@@ -15,5 +15,6 @@ export default gql`
 
   extend type Mutation {
     createTask(title: String!): Task!
+    updateTask(id: ID!, isCompleted: Boolean!): Task!
   }
 `;

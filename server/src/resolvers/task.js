@@ -22,6 +22,12 @@ export default {
       }
       return await taskModel.create({ title, author: me.id });
     },
+    updateTask: async (parent, { id, isCompleted }, {models: { taskModel }, me}, info) => {
+      if (!me) {
+        throw new AuthenticationError('You are not authenticated');
+      }
+      return await taskModel.findByIdAndUpdate(id, { isCompleted }, { new: true },)
+    }
   },
   Task: {
     author: async ({ author }, args, { models: { userModel } }, info) => {
