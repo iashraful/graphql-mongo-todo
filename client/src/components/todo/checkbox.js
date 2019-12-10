@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import cogoToast from 'cogo-toast'
 import serverConfig from '../../config/server'
 
 
@@ -28,6 +29,7 @@ export default class Checkbox extends React.Component {
     }
     let task = await axios.post(serverConfig.graphQLAPI, body, options)
     if (task.status === 200) {
+      cogoToast.success('Task updated successfully.', { position: 'top-right' });
       task = task['data']['data']['updateTask']
       this.setState({ isCompleted: task['isCompleted'] })
       this.props.onTaskUpdate(task)

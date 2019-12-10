@@ -1,6 +1,7 @@
 import React from 'react'
 import serverConfig from '../../config/server'
 import axios from 'axios'
+import cogoToast from 'cogo-toast'
 
 
 export default class AddNewTask extends React.Component {
@@ -31,6 +32,7 @@ export default class AddNewTask extends React.Component {
     }
     const task = await axios.post(serverConfig.graphQLAPI, JSON.stringify({ query: _mutation }), options)
     if (task['status'] === 200) {
+      cogoToast.success('Task added successfully.', { position: 'top-right' });
       const data = task['data']['data']['createTask']
       this.props.onNewTaskAdded(data)
       this.setState({ task: {title: ''} })
