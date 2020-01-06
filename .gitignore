@@ -3,3 +3,4 @@ node_modules
 
 server/src/config/database.js
 client/src/config/server.js
+db
