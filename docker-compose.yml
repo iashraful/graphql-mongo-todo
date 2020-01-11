@@ -28,9 +28,11 @@ services:
 
   mongodb:
     image: mongo
+    expose:
+      - '27017'
     environment: 
       - MONGO_INIT_DB_DATABASE_NAME='graphql-todo'
     volumes: 
       - ./db:/data/db
-    ports: 
+    ports:
       - '27019:27017'
