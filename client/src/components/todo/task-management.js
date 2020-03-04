@@ -69,12 +69,19 @@ export default class TaskManagement extends React.Component {
     const options = {
       headers: { 'Content-Type': 'application/json' },
     }
-    let task = await axios.post(serverConfig.graphQLAPI, body, options)
-    if (task.status === 200) {
-      cogoToast.success('Task updated successfully.', { position: 'top-right' });
-      task = task['data']['data']['updateTask']
-      this.setState({ lastUpdatedTask: task })
-      this.findAndUpdateTask(task)
+    try {
+      let task = await axios.post(serverConfig.graphQLAPI, body, options)
+      if (task.status === 200) {
+        cogoToast.success('Task updated successfully.', { position: 'top-right' });
+        task = task['data']['data']['updateTask']
+        this.setState({ lastUpdatedTask: task })
+        this.findAndUpdateTask(task)
+      }
+    } catch (e) {
+      const errorResponse = 'data' in ('response' in e ? e.response : {}) ? e.response.data : {errors: []}
+      errorResponse.errors.map((err) => {
+        cogoToast.error(err.message, { position: 'top-right' });
+      })
     }
   }
 

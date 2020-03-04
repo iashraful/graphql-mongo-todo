@@ -44,6 +44,7 @@ export default class AddNewTask extends React.Component {
     return (
       <form className="task-form" onSubmit={this.handleSubmit}>
         <input
+          style={{ marginBottom: '10px', paddingLeft: '5px' }}
           placeholder="Add your task here..."
           value={this.state.task.title}
           onChange={(e) => this.setState({ task: {title: e.target.value} })}/>
