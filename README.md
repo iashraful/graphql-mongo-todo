@@ -1,8 +1,13 @@
 # graphql-mongo-todo
 > A todo app with NodeJS, MongoDB, Apollo, GraphQL and React
 
+### Run the project using Docker[`docker-compose`]
+* Navigate to `cd server/src/config`
+* Copy the `database.js.example` file and Update the copied name without `.example`
+* Update your database name and host 
+* `docker-compose up` use `-d` for detached mode.
 
-### How to run for development [Traditional]
+### How to run for development [Tradinational approch]
 * Navigate to `cd server/src/config`
 * Copy the `database.js.example` file and Update the copied name without `.example`
 * Update your database name and host 
